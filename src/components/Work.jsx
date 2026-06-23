@@ -57,6 +57,7 @@ export default function Work() {
             <video
               ref={videoRef}
               src={loadVideo ? "/media/our-studio.mp4" : undefined}
+              poster="/media/our-studio-poster.jpg"
               controls
               autoPlay
               loop

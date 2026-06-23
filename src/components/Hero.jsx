@@ -33,6 +33,8 @@ export default function Hero() {
       <motion.div style={{ y: yBg }} className="absolute inset-0">
         <video
           ref={videoRef}
+          src="/media/hero-bg.mp4"
+          poster="/media/hero-bg-poster.jpg"
           autoPlay
           muted
           loop
@@ -40,9 +42,7 @@ export default function Hero() {
           preload="auto"
           fetchPriority="high"
           className="absolute inset-0 h-full w-full object-cover"
-        >
-          <source src="/media/hero-bg.mp4" type="video/mp4" />
-        </video>
+        />
       </motion.div>
 
       {/* Subtle white-balanced overlay */}
