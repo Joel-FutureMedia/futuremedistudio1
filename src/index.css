@@ -1,0 +1,350 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --brand: #323e4a;
+  --brand-dark: #28333e;
+  --brand-light: #4a5664;
+  --brand-muted: #8b95a1;
+  --brand-faint: #e8eaec;
+  --brand-surface: #f4f5f7;
+  --shadow-card: 0 1px 3px rgba(50, 62, 74, 0.06), 0 8px 24px rgba(50, 62, 74, 0.08);
+  --shadow-card-hover: 0 4px 12px rgba(50, 62, 74, 0.1), 0 16px 40px rgba(50, 62, 74, 0.12);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: var(--brand);
+  font-family: "Inter", system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(50, 62, 74, 0.12);
+  color: #323e4a;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--brand-surface); }
+::-webkit-scrollbar-thumb { background: #c5cad0; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--brand); }
+
+/* Component utilities — plain CSS to avoid Tailwind @apply issues in dev */
+.fm-card {
+  border-radius: 1rem;
+  border: 1px solid var(--brand-faint);
+  background: #ffffff;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.3s ease;
+}
+
+.fm-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.fm-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  background-color: var(--brand);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fm-btn-primary:hover {
+  background-color: var(--brand-dark);
+  box-shadow: var(--shadow-card);
+}
+
+.fm-btn-primary:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.fm-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--brand-faint);
+  background: #ffffff;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--brand);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.fm-btn-secondary:hover {
+  border-color: rgba(50, 62, 74, 0.3);
+  background-color: var(--brand-surface);
+}
+
+.fm-input {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid var(--brand-faint);
+  background: #ffffff;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: var(--brand);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fm-input::placeholder {
+  color: rgba(139, 149, 161, 0.6);
+}
+
+.fm-input:focus {
+  border-color: rgba(50, 62, 74, 0.4);
+  box-shadow: 0 0 0 2px rgba(50, 62, 74, 0.1);
+}
+
+.fm-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--brand-muted);
+}
+
+.fm-bullet {
+  margin-top: 0.5rem;
+  height: 0.375rem;
+  width: 0.375rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background-color: var(--brand);
+}
+
+.admin-table-wrap {
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid var(--brand-faint);
+  background: #ffffff;
+  box-shadow: var(--shadow-card);
+}
+
+.admin-table {
+  width: 100%;
+  min-width: 1100px;
+  text-align: left;
+  font-size: 0.875rem;
+}
+
+.admin-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--brand-surface);
+}
+
+.admin-table th {
+  white-space: nowrap;
+  border-bottom: 1px solid var(--brand-faint);
+  padding: 0.875rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--brand-muted);
+}
+
+.admin-table td {
+  border-bottom: 1px solid rgba(232, 234, 236, 0.7);
+  padding: 0.875rem 1rem;
+  color: var(--brand);
+}
+
+.admin-table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.admin-table tbody tr:hover {
+  background-color: rgba(244, 245, 247, 0.6);
+}
+
+/* Admin theme shell */
+.admin-shell {
+  --admin-bg: var(--brand-surface);
+  --admin-panel: #ffffff;
+  --admin-panel-alt: var(--brand-surface);
+  --admin-border: var(--brand-faint);
+  --admin-text: var(--brand);
+  --admin-text-muted: var(--brand-muted);
+  min-height: 100vh;
+  background-color: var(--admin-bg);
+  color: var(--admin-text);
+}
+
+.admin-shell.admin-theme-dark {
+  --admin-bg: #0c0e11;
+  --admin-panel: #161b22;
+  --admin-panel-alt: #1c2229;
+  --admin-border: #2a3139;
+  --admin-text: #f0f2f5;
+  --admin-text-muted: #9aa3ad;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.admin-theme-dark .bg-white {
+  background-color: var(--admin-panel) !important;
+}
+
+.admin-theme-dark .bg-brand-surface {
+  background-color: var(--admin-panel-alt) !important;
+}
+
+.admin-theme-dark .text-brand {
+  color: var(--admin-text) !important;
+}
+
+.admin-theme-dark .text-brand-light {
+  color: #c5cad0 !important;
+}
+
+.admin-theme-dark .text-brand-muted {
+  color: var(--admin-text-muted) !important;
+}
+
+.admin-theme-dark .border-brand-faint {
+  border-color: var(--admin-border) !important;
+}
+
+.admin-theme-dark .fm-card,
+.admin-theme-dark .admin-table-wrap,
+.admin-theme-dark .fm-input,
+.admin-theme-dark .fm-btn-secondary {
+  background-color: var(--admin-panel);
+  border-color: var(--admin-border);
+  color: var(--admin-text);
+}
+
+.admin-theme-dark .fm-input::placeholder {
+  color: rgba(154, 163, 173, 0.7);
+}
+
+.admin-theme-dark .admin-table thead {
+  background-color: var(--admin-panel-alt);
+}
+
+.admin-theme-dark .admin-table th {
+  border-color: var(--admin-border);
+  color: var(--admin-text-muted);
+}
+
+.admin-theme-dark .admin-table td {
+  border-color: var(--admin-border);
+  color: var(--admin-text);
+}
+
+.admin-theme-dark .admin-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.admin-theme-dark .fm-label {
+  color: var(--admin-text-muted);
+}
+
+.admin-theme-dark header.sticky {
+  background-color: rgba(22, 27, 34, 0.95) !important;
+}
+
+.admin-theme-dark aside.fixed {
+  background-color: var(--admin-panel) !important;
+}
+
+.admin-theme-dark a.text-brand-muted:hover {
+  color: var(--admin-text) !important;
+}
+
+/* Sidebar nav — active item must stay readable on white sidebar */
+.admin-nav-link {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--brand-light);
+  background-color: transparent;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.admin-nav-link:hover {
+  background-color: var(--brand-surface);
+  color: var(--brand);
+}
+
+.admin-nav-link.is-active {
+  background-color: #323e4a !important;
+  color: #ffffff !important;
+}
+
+.admin-theme-dark .admin-nav-link {
+  color: #c5cad0;
+}
+
+.admin-theme-dark .admin-nav-link:hover {
+  background-color: var(--admin-panel-alt);
+  color: var(--admin-text);
+}
+
+.admin-theme-dark .admin-nav-link.is-active {
+  background-color: #323e4a !important;
+  color: #ffffff !important;
+}
+
+/* Action icon buttons */
+.admin-icon-btn--success {
+  border-color: #059669 !important;
+  background-color: #059669 !important;
+  color: #ffffff !important;
+}
+
+.admin-icon-btn--success:hover {
+  border-color: #047857 !important;
+  background-color: #047857 !important;
+}
+
+.admin-icon-btn--danger {
+  border-color: #dc2626 !important;
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+}
+
+.admin-icon-btn--danger:hover {
+  border-color: #b91c1c !important;
+  background-color: #b91c1c !important;
+}
+
+.admin-icon-btn--warning {
+  border-color: #d97706 !important;
+  background-color: #d97706 !important;
+  color: #ffffff !important;
+}
+
+.admin-icon-btn--warning:hover {
+  border-color: #b45309 !important;
+  background-color: #b45309 !important;
+}
