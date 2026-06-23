@@ -1,4 +1,6 @@
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8686/api";
+//const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8686/api";
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "https://studioapi.winterknights.com.na/api";
+
 
 function getToken() {
   return localStorage.getItem("fm_token");
