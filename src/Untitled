@@ -1,0 +1,445 @@
+You are a senior Java Spring Boot and React architect.
+
+I need you to fully audit and fix my application instead of making small changes.
+
+Current Stack:
+- Backend: Java Spring Boot
+- Frontend: React
+- JWT Authentication
+- Admin Panel
+- Public Website
+
+CURRENT PROBLEM
+
+The browser shows:
+
+GET /api/admin/form-options 403
+GET /api/admin/accountants 403
+GET /api/admin/music-types 403
+GET /api/admin/voice-actors 403
+GET /api/admin/job-types 403
+GET /api/admin/script-lengths 403
+GET /api/video-production/options 403
+
+POST /api/admin/accountants 403
+
+The result is:
+
+- dropdowns cannot load
+- admins cannot create lookup values
+- public users cannot see dropdown values
+- form submission workflow is broken
+
+======================================================
+TASK 1
+AUDIT SPRING SECURITY
+======================================================
+
+Inspect ALL security configuration.
+
+Look at:
+
+SecurityConfig
+
+JwtAuthenticationFilter
+
+AuthenticationFilter
+
+CorsConfig
+
+WebSecurityConfigurer
+
+SecurityFilterChain
+
+Authorization rules
+
+Method security
+
+@PreAuthorize
+
+Roles
+
+Authorities
+
+JWT parsing
+
+Find why these endpoints return 403.
+
+Fix them correctly.
+
+======================================================
+TASK 2
+PUBLIC ENDPOINTS
+======================================================
+
+The endpoint
+
+GET /api/video-production/options
+
+MUST be public.
+
+No authentication required.
+
+It should return
+
+Accountants
+
+Job Types
+
+Script Lengths
+
+Voice Actors
+
+Music Types
+
+in one response.
+
+Anyone visiting the website must receive HTTP 200.
+
+Never 403.
+
+======================================================
+TASK 3
+ADMIN ENDPOINTS
+======================================================
+
+The following endpoints must require ADMIN authentication.
+
+GET /api/admin/accountants
+
+POST /api/admin/accountants
+
+PUT /api/admin/accountants/{id}
+
+DELETE /api/admin/accountants/{id}
+
+GET /api/admin/job-types
+
+POST /api/admin/job-types
+
+PUT /api/admin/job-types/{id}
+
+DELETE /api/admin/job-types/{id}
+
+GET /api/admin/script-lengths
+
+POST /api/admin/script-lengths
+
+PUT /api/admin/script-lengths/{id}
+
+DELETE /api/admin/script-lengths/{id}
+
+GET /api/admin/voice-actors
+
+POST /api/admin/voice-actors
+
+PUT /api/admin/voice-actors/{id}
+
+DELETE /api/admin/voice-actors/{id}
+
+GET /api/admin/music-types
+
+POST /api/admin/music-types
+
+PUT /api/admin/music-types/{id}
+
+DELETE /api/admin/music-types/{id}
+
+Authenticated admins must receive HTTP 200.
+
+Not 403.
+
+======================================================
+TASK 4
+JWT
+======================================================
+
+Audit JWT.
+
+Verify:
+
+Authorization header
+
+Bearer token
+
+JWT parsing
+
+Token expiration
+
+Role extraction
+
+ROLE_ADMIN authority
+
+Authentication principal
+
+SecurityContext
+
+If React is not sending the token, fix it.
+
+If Spring is rejecting the token, fix it.
+
+======================================================
+TASK 5
+REACT API CLIENT
+======================================================
+
+Audit the React API client.
+
+Inspect:
+
+axios
+
+fetch
+
+client.js
+
+api.js
+
+request interceptors
+
+Ensure every authenticated request sends:
+
+Authorization: Bearer <token>
+
+If missing, fix it globally.
+
+Do NOT duplicate code.
+
+======================================================
+TASK 6
+CRUD
+======================================================
+
+All lookup entities must support complete CRUD.
+
+Accountants
+
+Job Types
+
+Script Lengths
+
+Voice Actors
+
+Music Types
+
+Admin can
+
+Create
+
+Read
+
+Update
+
+Delete
+
+without any errors.
+
+======================================================
+TASK 7
+LOOKUPS PANEL
+======================================================
+
+Inspect LookupsPanel.jsx
+
+Every tab must:
+
+Load correctly
+
+Display data
+
+Refresh after create
+
+Refresh after update
+
+Refresh after delete
+
+Handle loading state
+
+Handle empty state
+
+Handle server errors
+
+======================================================
+TASK 8
+PUBLIC FORM
+======================================================
+
+The Video Production Request form must automatically load all dropdowns.
+
+Accountants
+
+Job Types
+
+Script Lengths
+
+Voice Actors
+
+Music Types
+
+No dropdown should be empty if records exist.
+
+No 403.
+
+No console errors.
+
+======================================================
+TASK 9
+VIDEO REQUEST MANAGEMENT
+======================================================
+
+Admins must be able to
+
+View submitted forms
+
+Search forms
+
+Open a form
+
+Approve
+
+Reject
+
+Add internal notes
+
+Change status
+
+Save changes
+
+Refresh automatically
+
+======================================================
+TASK 10
+DATABASE
+======================================================
+
+Verify entities.
+
+Verify repositories.
+
+Verify services.
+
+Verify controllers.
+
+Verify foreign keys.
+
+Verify DTO mapping.
+
+Verify JSON serialization.
+
+Verify validation.
+
+Verify migrations.
+
+If lookup tables are empty, create seed data.
+
+======================================================
+TASK 11
+CORS
+======================================================
+
+Audit CORS.
+
+Frontend origin must be allowed.
+
+Allow
+
+Authorization
+
+Content-Type
+
+Accept
+
+GET
+
+POST
+
+PUT
+
+DELETE
+
+OPTIONS
+
+======================================================
+TASK 12
+FINAL TEST
+======================================================
+
+Verify all of these work successfully:
+
+✓ Admin login
+
+✓ JWT stored
+
+✓ JWT attached to requests
+
+✓ GET /api/admin/accountants
+
+✓ POST /api/admin/accountants
+
+✓ PUT /api/admin/accountants/{id}
+
+✓ DELETE /api/admin/accountants/{id}
+
+✓ Same for all lookup tables
+
+✓ GET /api/video-production/options
+
+✓ Public dropdowns populated
+
+✓ Submit video request
+
+✓ Admin sees submitted request
+
+✓ Admin approves request
+
+✓ Admin rejects request
+
+✓ No 401
+
+✓ No 403
+
+✓ No CORS errors
+
+✓ No React console errors
+
+======================================================
+IMPORTANT
+======================================================
+
+Do NOT create duplicate controllers.
+
+Do NOT create duplicate services.
+
+Do NOT rename existing APIs unless necessary.
+
+Do NOT leave TODO comments.
+
+Fix the root cause.
+
+Search the entire project for every reference to:
+
+accountants
+
+job-types
+
+script-lengths
+
+voice-actors
+
+music-types
+
+video-production
+
+form-options
+
+and ensure every endpoint is correctly wired from:
+
+Entity
+→ Repository
+→ Service
+→ Controller
+→ Security
+→ React API Client
+→ React Components
+
+Finally provide a summary of every file modified and explain exactly why each change was necessary.

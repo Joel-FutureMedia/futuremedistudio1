@@ -23,8 +23,8 @@ export default function Footer() {
             {[
               { l: "Services", h: "#services" },
               { l: "Work", h: "#work" },
-              { l: "Set Package", h: "#packages" },
-              { l: "Book", h: "#book" },
+              { l: "Sets", h: "#sets" },
+              { l: "Video Production Request", h: "#video-production-request" },
             ].map(({ l, h }) => (
               <a key={l} href={h} className="transition-colors hover:text-brand">{l}</a>
             ))}

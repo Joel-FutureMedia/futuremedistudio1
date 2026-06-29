@@ -161,7 +161,7 @@ export default function Booking() {
 
   if (loading) {
     return (
-      <section id="packages" className="bg-brand-surface py-24 text-center">
+      <section id="book" className="bg-brand-surface py-24 text-center">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-brand-faint border-t-brand" />
           <p className="mt-4 text-sm text-brand-muted">Loading packages…</p>
@@ -171,8 +171,8 @@ export default function Booking() {
   }
 
   return (
-    <section id="packages" className="bg-brand-surface py-24 md:py-32">
-      <div id="book" className="mx-auto max-w-6xl px-6">
+    <section id="book" className="bg-brand-surface py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-6">
         <div className="mb-12 text-center">
           <Reveal><div className="flex justify-center"><Eyebrow>Book the studio</Eyebrow></div></Reveal>
           <Reveal delay={0.08}>

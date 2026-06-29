@@ -7,11 +7,17 @@ import BookingsPanel from "./BookingsPanel";
 import PackagesPanel from "./PackagesPanel";
 import SlotsPanel from "./SlotsPanel";
 import AdminsPanel from "./AdminsPanel";
+import VideoProductionRequestsPanel from "./VideoProductionRequestsPanel";
+import LookupsPanel from "./LookupsPanel";
+import SetsPanel from "./SetsPanel";
 
 const NAV = [
   { id: "dashboard", label: "Dashboard" },
   { id: "bookings", label: "Bookings" },
+  { id: "video-requests", label: "Video Requests" },
   { id: "packages", label: "Packages" },
+  { id: "sets", label: "Sets" },
+  { id: "form-options", label: "Form Options" },
   { id: "slots", label: "Slots" },
   { id: "admins", label: "Admins" },
 ];
@@ -114,7 +120,10 @@ export default function AdminLayout({ admin, onLogout }) {
             <motion.div key={tab} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}>
               {tab === "dashboard" && <Dashboard onNavigate={navigate} />}
               {tab === "bookings" && <BookingsPanel highlightId={highlightId} />}
+              {tab === "video-requests" && <VideoProductionRequestsPanel />}
               {tab === "packages" && <PackagesPanel />}
+              {tab === "sets" && <SetsPanel />}
+              {tab === "form-options" && <LookupsPanel />}
               {tab === "slots" && <SlotsPanel />}
               {tab === "admins" && <AdminsPanel />}
             </motion.div>

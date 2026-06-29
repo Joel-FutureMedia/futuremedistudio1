@@ -5,8 +5,8 @@ import { LOGO } from "../constants/brand";
 const LINKS = [
   { label: "Services", href: "#services" },
   { label: "Work", href: "#work" },
-  { label: "Set Package", href: "#packages" },
-  { label: "Book", href: "#book" },
+  { label: "Sets", href: "#sets" },
+  { label: "Video Production Request", href: "#video-production-request" },
 ];
 
 export default function Nav() {

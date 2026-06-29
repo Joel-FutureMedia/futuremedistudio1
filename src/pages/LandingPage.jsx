@@ -4,7 +4,9 @@ import Marquee from "../components/Marquee";
 import Services from "../components/Services";
 import Work from "../components/Work";
 import Stats from "../components/Stats";
+import Sets from "../components/Sets";
 import Booking from "../components/Booking";
+import VideoProductionRequest from "../components/VideoProductionRequest";
 import Footer from "../components/Footer";
 
 export default function LandingPage() {
@@ -17,7 +19,9 @@ export default function LandingPage() {
         <Services />
         <Work />
         <Stats />
+        <Sets />
         <Booking />
+        <VideoProductionRequest />
       </main>
       <Footer />
     </div>
