@@ -108,17 +108,17 @@ export default function Sets() {
   }, [activeCategory]);
 
   return (
-    <section id="sets" className="bg-brand-surface py-24 md:py-32">
+    <section id="sets" className="bg-[#313e4a] py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-12 text-center">
-          <Reveal><div className="flex justify-center"><Eyebrow>Studio inventory</Eyebrow></div></Reveal>
+          <Reveal><div className="flex justify-center"><Eyebrow className="text-white [&>span:first-child]:bg-white/40">Studio inventory</Eyebrow></div></Reveal>
           <Reveal delay={0.08}>
-            <h2 className="mx-auto mt-4 max-w-2xl text-[clamp(1.8rem,4vw,2.8rem)] font-semibold tracking-tightest text-brand">
+            <h2 className="mx-auto mt-4 max-w-2xl text-[clamp(1.8rem,4vw,2.8rem)] font-semibold tracking-tightest text-white">
               Sets available in our studio.
             </h2>
           </Reveal>
           <Reveal delay={0.12}>
-            <p className="mx-auto mt-4 max-w-xl text-base text-brand-muted">
+            <p className="mx-auto mt-4 max-w-xl text-base text-white/75">
               Browse chairs, tables, lounge sets, and decor — everything ready for your next production.
             </p>
           </Reveal>
@@ -136,13 +136,13 @@ export default function Sets() {
                   onClick={() => setActiveCategory(cat.id)}
                   className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all ${
                     active
-                      ? "bg-brand text-white shadow-card"
-                      : "border border-brand-faint bg-white text-brand-muted hover:border-brand/25 hover:text-brand"
+                      ? "bg-white text-[#313e4a] shadow-card"
+                      : "border border-white/30 bg-[#313e4a] text-white/80 hover:border-white/60 hover:text-white"
                   }`}
                 >
                   {cat.label}
                   <span className={`rounded-md px-1.5 py-0.5 text-[11px] font-semibold ${
-                    active ? "bg-white/20 text-white" : "bg-brand-surface text-brand-muted"
+                    active ? "bg-[#313e4a]/15 text-[#313e4a]" : "bg-white/10 text-white/80"
                   }`}>
                     {count}
                   </span>
@@ -161,10 +161,10 @@ export default function Sets() {
             transition={{ duration: 0.3, ease: EASE }}
           >
             <div className="mb-6 flex items-center justify-between">
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-brand">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
                 {SET_CATEGORIES.find((c) => c.id === activeCategory)?.label}
               </h3>
-              <span className="text-sm text-brand-muted">{filtered.length} item{filtered.length !== 1 ? "s" : ""}</span>
+              <span className="text-sm text-white/70">{filtered.length} item{filtered.length !== 1 ? "s" : ""}</span>
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

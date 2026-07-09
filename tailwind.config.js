@@ -5,12 +5,12 @@ export default {
     extend: {
       colors: {
         brand: {
-          DEFAULT: "#323e4a",
-          dark: "#28333e",
-          light: "#4a5664",
-          muted: "#8b95a1",
-          faint: "#e8eaec",
-          surface: "#f4f5f7",
+          DEFAULT: "#313e4a",
+          dark: "#27333d",
+          light: "#dbe2ea",
+          muted: "#b3c0ce",
+          faint: "rgba(255,255,255,0.22)",
+          surface: "rgba(255,255,255,0.08)",
         },
       },
       fontFamily: {
@@ -18,9 +18,9 @@ export default {
       },
       letterSpacing: { tightest: "-0.04em" },
       boxShadow: {
-        card: "0 1px 3px rgba(50, 62, 74, 0.06), 0 8px 24px rgba(50, 62, 74, 0.08)",
-        "card-hover": "0 4px 12px rgba(50, 62, 74, 0.1), 0 16px 40px rgba(50, 62, 74, 0.12)",
-        nav: "0 4px 24px rgba(50, 62, 74, 0.08)",
+        card: "0 1px 3px rgba(9, 12, 15, 0.25), 0 10px 24px rgba(9, 12, 15, 0.22)",
+        "card-hover": "0 4px 12px rgba(9, 12, 15, 0.3), 0 18px 42px rgba(9, 12, 15, 0.26)",
+        nav: "0 8px 32px rgba(9, 12, 15, 0.22)",
       },
     },
   },

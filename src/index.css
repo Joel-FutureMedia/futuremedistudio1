@@ -4,14 +4,14 @@
 
 :root {
   color-scheme: light;
-  --brand: #323e4a;
-  --brand-dark: #28333e;
-  --brand-light: #4a5664;
-  --brand-muted: #8b95a1;
-  --brand-faint: #e8eaec;
-  --brand-surface: #f4f5f7;
-  --shadow-card: 0 1px 3px rgba(50, 62, 74, 0.06), 0 8px 24px rgba(50, 62, 74, 0.08);
-  --shadow-card-hover: 0 4px 12px rgba(50, 62, 74, 0.1), 0 16px 40px rgba(50, 62, 74, 0.12);
+  --brand: #313e4a;
+  --brand-dark: #27333d;
+  --brand-light: #dbe2ea;
+  --brand-muted: #b3c0ce;
+  --brand-faint: rgba(255, 255, 255, 0.22);
+  --brand-surface: rgba(255, 255, 255, 0.08);
+  --shadow-card: 0 1px 3px rgba(9, 12, 15, 0.25), 0 10px 24px rgba(9, 12, 15, 0.22);
+  --shadow-card-hover: 0 4px 12px rgba(9, 12, 15, 0.3), 0 18px 42px rgba(9, 12, 15, 0.26);
 }
 
 * {
@@ -23,28 +23,35 @@ html {
   scroll-behavior: smooth;
 }
 
+#top,
+#services,
+#our-work,
+#work {
+  scroll-margin-top: 5.75rem;
+}
+
 body {
   margin: 0;
-  background: #ffffff;
-  color: var(--brand);
+  background: var(--brand);
+  color: #ffffff;
   font-family: "Inter", system-ui, sans-serif;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: rgba(50, 62, 74, 0.12);
-  color: #323e4a;
+  background: rgba(255, 255, 255, 0.24);
+  color: #ffffff;
 }
 
 ::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: var(--brand-surface); }
-::-webkit-scrollbar-thumb { background: #c5cad0; border-radius: 99px; }
-::-webkit-scrollbar-thumb:hover { background: var(--brand); }
+::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.1); }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.36); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.5); }
 
 /* Component utilities — plain CSS to avoid Tailwind @apply issues in dev */
 .fm-card {
   border-radius: 1rem;
-  border: 1px solid var(--brand-faint);
+  border: 1px solid rgba(49, 62, 74, 0.16);
   background: #ffffff;
   box-shadow: var(--shadow-card);
   transition: box-shadow 0.3s ease;
@@ -84,7 +91,7 @@ body {
   justify-content: center;
   gap: 0.5rem;
   border-radius: 0.75rem;
-  border: 1px solid var(--brand-faint);
+  border: 1px solid rgba(49, 62, 74, 0.2);
   background: #ffffff;
   padding: 0.75rem 1.5rem;
   font-size: 0.875rem;
@@ -94,14 +101,14 @@ body {
 }
 
 .fm-btn-secondary:hover {
-  border-color: rgba(50, 62, 74, 0.3);
-  background-color: var(--brand-surface);
+  border-color: rgba(49, 62, 74, 0.35);
+  background-color: #f3f6fa;
 }
 
 .fm-input {
   width: 100%;
   border-radius: 0.75rem;
-  border: 1px solid var(--brand-faint);
+  border: 1px solid rgba(49, 62, 74, 0.2);
   background: #ffffff;
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
@@ -111,12 +118,12 @@ body {
 }
 
 .fm-input::placeholder {
-  color: rgba(139, 149, 161, 0.6);
+  color: rgba(49, 62, 74, 0.55);
 }
 
 .fm-input:focus {
-  border-color: rgba(50, 62, 74, 0.4);
-  box-shadow: 0 0 0 2px rgba(50, 62, 74, 0.1);
+  border-color: rgba(49, 62, 74, 0.45);
+  box-shadow: 0 0 0 2px rgba(49, 62, 74, 0.15);
 }
 
 .fm-label {
@@ -124,7 +131,7 @@ body {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--brand-muted);
+  color: rgba(49, 62, 74, 0.78);
 }
 
 .fm-bullet {
@@ -140,7 +147,7 @@ body {
   overflow: hidden;
   border-radius: 1rem;
   border: 1px solid var(--brand-faint);
-  background: #ffffff;
+  background: var(--brand);
   box-shadow: var(--shadow-card);
 }
 
@@ -170,7 +177,7 @@ body {
 }
 
 .admin-table td {
-  border-bottom: 1px solid rgba(232, 234, 236, 0.7);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
   padding: 0.875rem 1rem;
   color: var(--brand);
 }
@@ -180,17 +187,17 @@ body {
 }
 
 .admin-table tbody tr:hover {
-  background-color: rgba(244, 245, 247, 0.6);
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 /* Admin theme shell */
 .admin-shell {
   --admin-bg: var(--brand-surface);
-  --admin-panel: #ffffff;
+  --admin-panel: var(--brand);
   --admin-panel-alt: var(--brand-surface);
   --admin-border: var(--brand-faint);
-  --admin-text: var(--brand);
-  --admin-text-muted: var(--brand-muted);
+  --admin-text: #ffffff;
+  --admin-text-muted: rgba(255, 255, 255, 0.75);
   min-height: 100vh;
   background-color: var(--admin-bg);
   color: var(--admin-text);
@@ -297,12 +304,12 @@ body {
 }
 
 .admin-nav-link.is-active {
-  background-color: #323e4a !important;
-  color: #ffffff !important;
+  background-color: #ffffff !important;
+  color: var(--brand) !important;
 }
 
 .admin-theme-dark .admin-nav-link {
-  color: #c5cad0;
+  color: #d8e0ea;
 }
 
 .admin-theme-dark .admin-nav-link:hover {
@@ -311,8 +318,8 @@ body {
 }
 
 .admin-theme-dark .admin-nav-link.is-active {
-  background-color: #323e4a !important;
-  color: #ffffff !important;
+  background-color: #ffffff !important;
+  color: var(--brand) !important;
 }
 
 /* Action icon buttons */
@@ -348,3 +355,4 @@ body {
   border-color: #b45309 !important;
   background-color: #b45309 !important;
 }
+

@@ -161,22 +161,22 @@ export default function Booking() {
 
   if (loading) {
     return (
-      <section id="book" className="bg-brand-surface py-24 text-center">
+      <section id="book" className="bg-[#313e4a] py-24 text-center">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-brand-faint border-t-brand" />
-          <p className="mt-4 text-sm text-brand-muted">Loading packages…</p>
+          <p className="mt-4 text-sm text-white/75">Loading packages…</p>
         </div>
       </section>
     );
   }
 
   return (
-    <section id="book" className="bg-brand-surface py-24 md:py-32">
+    <section id="book" className="bg-[#313e4a] py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-12 text-center">
-          <Reveal><div className="flex justify-center"><Eyebrow>Book the studio</Eyebrow></div></Reveal>
+          <Reveal><div className="flex justify-center"><Eyebrow className="text-white [&>span:first-child]:bg-white/40">Book the studio</Eyebrow></div></Reveal>
           <Reveal delay={0.08}>
-            <h2 className="mx-auto mt-4 max-w-2xl text-[clamp(1.8rem,4vw,2.8rem)] font-semibold tracking-tightest text-brand">
+            <h2 className="mx-auto mt-4 max-w-2xl text-[clamp(1.8rem,4vw,2.8rem)] font-semibold tracking-tightest text-white">
               Reserve your production in four steps.
             </h2>
           </Reveal>

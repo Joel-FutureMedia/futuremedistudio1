@@ -52,19 +52,14 @@ function Card({ s }) {
 
 export default function Services() {
   return (
-    <section id="services" className="bg-white py-24 md:py-32">
+    <section id="services" className="bg-[#313e4a] pt-10 pb-8 md:pt-12 md:pb-10">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <Reveal><Eyebrow>What we produce</Eyebrow></Reveal>
-            <Reveal delay={0.08}>
-              <h2 className="mt-4 max-w-xl text-[clamp(1.8rem,4vw,2.8rem)] font-semibold leading-tight tracking-tightest text-brand">
-                Three formats. One world-class standard.
-              </h2>
-            </Reveal>
+            <Reveal><Eyebrow className="text-white [&>span:first-child]:bg-white/40">What we produce</Eyebrow></Reveal>
           </div>
           <Reveal delay={0.12}>
-            <p className="max-w-sm text-sm leading-relaxed text-brand-muted">
+            <p className="max-w-sm text-sm leading-relaxed text-white/75">
               One studio, one team, one finish line: content that looks like it cost ten times what it did.
             </p>
           </Reveal>

@@ -2,11 +2,9 @@ import Nav from "../components/Nav";
 import Hero from "../components/Hero";
 import Marquee from "../components/Marquee";
 import Services from "../components/Services";
+import OurWorkShowcase from "../components/OurWorkShowcase";
 import Work from "../components/Work";
 import Stats from "../components/Stats";
-import Sets from "../components/Sets";
-import Booking from "../components/Booking";
-import VideoProductionRequest from "../components/VideoProductionRequest";
 import Footer from "../components/Footer";
 
 export default function LandingPage() {
@@ -17,11 +15,9 @@ export default function LandingPage() {
         <Hero />
         <Marquee />
         <Services />
+        <OurWorkShowcase />
         <Work />
         <Stats />
-        <Sets />
-        <Booking />
-        <VideoProductionRequest />
       </main>
       <Footer />
     </div>

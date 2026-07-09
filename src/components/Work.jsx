@@ -39,17 +39,17 @@ export default function Work() {
   }, [loadVideo]);
 
   return (
-    <section id="work" className="bg-brand-surface py-24 md:py-32">
+    <section id="work" className="bg-[#313e4a] pb-16 pt-6 md:pb-20 md:pt-8">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
-            <Reveal><Eyebrow>Our studio</Eyebrow></Reveal>
+            <Reveal><Eyebrow className="text-white [&>span:first-child]:bg-white/40">Our studio</Eyebrow></Reveal>
             <Reveal delay={0.08}>
-              <h2 className="mt-4 text-[clamp(1.8rem,4vw,2.8rem)] font-semibold tracking-tightest text-brand">Inside the studio.</h2>
+              <h2 className="mt-4 text-[clamp(1.8rem,4vw,2.8rem)] font-semibold tracking-tightest text-white">Inside the studio.</h2>
             </Reveal>
           </div>
           <Reveal delay={0.12}>
-            <p className="max-w-xs text-sm text-brand-muted">Press play for a look inside the room where it all comes together.</p>
+            <p className="max-w-xs text-sm text-white/75">Press play for a look inside the room where it all comes together.</p>
           </Reveal>
         </div>
         <Reveal delay={0.1}>
@@ -63,7 +63,7 @@ export default function Work() {
               loop
               muted
               playsInline
-              preload={loadVideo ? "auto" : "none"}
+              preload={loadVideo ? "metadata" : "none"}
               className="aspect-video w-full bg-brand object-cover"
             />
           </div>
