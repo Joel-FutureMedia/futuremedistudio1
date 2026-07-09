@@ -46,8 +46,9 @@ function Calendar({ month, year, selectedDate, onSelect, availableDates }) {
 
   return (
     <div>
-      <p className="mb-4 text-sm font-medium text-brand">{monthLabel}</p>
-      <div className="mb-2 grid grid-cols-7 gap-1 text-center text-[10px] font-semibold uppercase tracking-wider text-brand-muted">
+      <p className="mb-1 text-sm font-semibold text-[#313e4a]">{monthLabel}</p>
+      <p className="mb-4 text-xs font-medium text-[#313e4a]/70">Available dates are highlighted in red.</p>
+      <div className="mb-2 grid grid-cols-7 gap-1 text-center text-[10px] font-semibold uppercase tracking-wider text-[#313e4a]/65">
         {DOW.map((d, i) => <span key={i}>{d}</span>)}
       </div>
       <div className="grid grid-cols-7 gap-1">
@@ -59,10 +60,21 @@ function Calendar({ month, year, selectedDate, onSelect, availableDates }) {
           const disabled = dateObj < today || !hasSlots;
           const active = selectedDate === dateStr;
           return (
-            <button key={d} disabled={disabled} onClick={() => onSelect(dateStr)}
+            <button
+              key={d}
+              type="button"
+              disabled={disabled}
+              onClick={() => onSelect(dateStr)}
               className={`flex aspect-square items-center justify-center rounded-lg text-sm transition-all ${
-                disabled ? "cursor-not-allowed text-brand-faint" : active ? "bg-brand font-semibold text-white shadow-card" : "text-brand-light hover:bg-brand-surface"
-              }`}>
+                disabled
+                  ? "cursor-not-allowed text-[#313e4a]/25"
+                  : active
+                    ? "bg-[#313e4a] font-semibold text-white shadow-md ring-2 ring-[#313e4a]/25"
+                    : hasSlots
+                      ? "booking-date-available font-semibold text-white shadow-sm"
+                      : "text-[#313e4a]/40"
+              }`}
+            >
               {d}
             </button>
           );
@@ -189,15 +201,15 @@ export default function Booking() {
                 <div key={label} className="flex flex-1 items-center last:flex-none">
                   <div className="flex items-center gap-2">
                     <span className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold transition-all ${
-                      i < step ? "bg-brand text-white" : i === step ? "bg-brand text-white ring-4 ring-brand/15" : "border border-brand-faint bg-white text-brand-muted"
+                      i < step ? "bg-[#313e4a] text-white" : i === step ? "bg-[#313e4a] text-white ring-4 ring-[#313e4a]/15" : "border border-[#313e4a]/20 bg-white text-[#313e4a]/55"
                     }`}>
                       {i < step ? "✓" : i + 1}
                     </span>
-                    <span className={`hidden text-sm sm:block ${i <= step ? "font-medium text-brand" : "text-brand-muted"}`}>{label}</span>
+                    <span className={`hidden text-sm sm:block ${i <= step ? "font-semibold text-[#313e4a]" : "text-[#313e4a]/55"}`}>{label}</span>
                   </div>
                   {i < STEPS.length - 1 && (
-                    <div className="mx-3 h-px flex-1 bg-brand-faint">
-                      <div className={`h-px bg-brand transition-all duration-500 ${i < step ? "w-full" : "w-0"}`} />
+                    <div className="mx-3 h-px flex-1 bg-[#313e4a]/15">
+                      <div className={`h-px bg-[#313e4a] transition-all duration-500 ${i < step ? "w-full" : "w-0"}`} />
                     </div>
                   )}
                 </div>
@@ -206,7 +218,7 @@ export default function Booking() {
 
             <div className="fm-card p-6 md:p-8">
               {error && (
-                <div className="mb-4 rounded-xl border border-brand/20 bg-brand-surface px-4 py-3 text-sm text-brand">{error}</div>
+                <div className="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-800">{error}</div>
               )}
 
               <AnimatePresence mode="wait">
@@ -214,7 +226,7 @@ export default function Booking() {
                   <motion.div key="s0" initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }}
                     className="grid gap-4 sm:grid-cols-2">
                     {packages.length === 0 ? (
-                      <p className="col-span-full py-12 text-center text-brand-muted">No packages available yet.</p>
+                      <p className="col-span-full py-12 text-center font-medium text-[#313e4a]/70">No packages available yet.</p>
                     ) : packages.map((p) => {
                       const active = pkgId === p.id;
                       return (
@@ -227,14 +239,14 @@ export default function Booking() {
                           transition={{ type: "spring", stiffness: 400, damping: 28 }}
                           className={`relative overflow-hidden rounded-2xl border-2 p-5 text-left transition-all duration-200 ${
                             active
-                              ? "border-brand bg-white shadow-card-hover ring-4 ring-brand/20"
-                              : "border-brand-faint bg-white hover:border-brand/50 hover:shadow-card"
+                              ? "border-[#313e4a] bg-white shadow-card-hover ring-4 ring-[#313e4a]/15"
+                              : "border-[#313e4a]/15 bg-white hover:border-[#313e4a]/35 hover:shadow-card"
                           }`}
                         >
                           {active && (
                             <>
-                              <span className="absolute inset-x-0 top-0 h-1.5 bg-brand" aria-hidden="true" />
-                              <span className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-brand px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">
+                              <span className="absolute inset-x-0 top-0 h-1.5 bg-[#313e4a]" aria-hidden="true" />
+                              <span className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-[#313e4a] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden="true">
                                   <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
@@ -243,28 +255,28 @@ export default function Booking() {
                             </>
                           )}
                           {p.featured && (
-                            <span className="mb-3 inline-block rounded-lg bg-brand px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">
+                            <span className="mb-3 inline-block rounded-lg bg-[#313e4a] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">
                               Popular
                             </span>
                           )}
-                          <h4 className="pr-24 text-lg font-semibold text-brand">{p.name}</h4>
+                          <h4 className="pr-24 text-lg font-semibold text-[#313e4a]">{p.name}</h4>
                           <div className="mt-1 flex items-baseline gap-1">
-                            <span className="text-2xl font-semibold text-brand">N${formatPrice(p.price)}</span>
-                            <span className="text-xs text-brand-muted">/ {p.duration}</span>
+                            <span className="text-2xl font-semibold text-[#313e4a]">N${formatPrice(p.price)}</span>
+                            <span className="text-xs font-medium text-[#313e4a]/65">/ {p.duration}</span>
                           </div>
                           <div className="mt-3 flex gap-3">
-                            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-brand/15 bg-brand-surface text-brand">
+                            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#313e4a]/15 bg-[#f3f5f7] text-[#313e4a]">
                               <IconDescription />
                             </span>
-                            <p className="pt-1 text-sm leading-relaxed text-brand-light">{p.description}</p>
+                            <p className="pt-1 text-sm leading-relaxed text-[#313e4a]/85">{p.description}</p>
                           </div>
                           <ul className="mt-4 space-y-3">
                             {(p.items || []).map((item) => (
-                              <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-brand">
-                                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-brand/15 bg-brand/10 text-brand">
+                              <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-[#313e4a]">
+                                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#313e4a]/15 bg-[#313e4a]/10 text-[#313e4a]">
                                   <IconCheckItem />
                                 </span>
-                                <span className="pt-0.5 text-brand-light">{item}</span>
+                                <span className="pt-0.5 text-[#313e4a]/85">{item}</span>
                               </li>
                             ))}
                           </ul>
@@ -277,29 +289,29 @@ export default function Booking() {
                 {step === 1 && (
                   <motion.div key="s1" initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }}
                     className="grid gap-8 md:grid-cols-2">
-                    <div className="rounded-xl border border-brand-faint bg-brand-surface p-5">
+                    <div className="rounded-xl border border-[#313e4a]/15 bg-[#f8f9fb] p-5">
                       <Calendar month={calMonth} year={calYear} selectedDate={selectedDate}
                         onSelect={(d) => { setSelectedDate(d); setSlotId(null); }} availableDates={availableDates} />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-brand">Pick a session time</p>
-                      <p className="mt-1 text-sm text-brand-muted">Available slots from our team.</p>
+                      <p className="text-sm font-semibold text-[#313e4a]">Pick a session time</p>
+                      <p className="mt-1 text-sm text-[#313e4a]/75">Available slots from our team.</p>
                       <div className="mt-5 grid grid-cols-2 gap-3">
                         {timesForDate.length === 0 ? (
-                          <p className="col-span-2 text-sm text-brand-muted">{selectedDate ? "No times for this date." : "Select a date first."}</p>
+                          <p className="col-span-2 text-sm font-medium text-[#313e4a]/70">{selectedDate ? "No times for this date." : "Select a date first."}</p>
                         ) : timesForDate.map((s) => {
                           const t = s.startTime?.slice(0, 5);
                           const active = slotId === s.id;
                           return (
-                            <button key={s.id} onClick={() => setSlotId(s.id)}
-                              className={`rounded-xl border py-3 text-sm font-medium transition-all ${active ? "border-brand bg-brand text-white" : "border-brand-faint text-brand-light hover:border-brand/30 hover:bg-brand-surface"}`}>
+                            <button key={s.id} type="button" onClick={() => setSlotId(s.id)}
+                              className={`rounded-xl border py-3 text-sm font-semibold transition-all ${active ? "border-[#313e4a] bg-[#313e4a] text-white shadow-md" : "border-[#313e4a]/20 bg-white text-[#313e4a] hover:border-[#313e4a]/40 hover:bg-[#f3f5f7]"}`}>
                               {t}
                             </button>
                           );
                         })}
                       </div>
-                      <div className="mt-6 rounded-xl border border-brand-faint bg-brand-surface p-4 text-sm text-brand-muted">
-                        <span className="font-medium text-brand">{chosen?.name}</span>
+                      <div className="mt-6 rounded-xl border border-[#313e4a]/15 bg-[#f8f9fb] p-4 text-sm text-[#313e4a]/80">
+                        <span className="font-semibold text-[#313e4a]">{chosen?.name}</span>
                         {" · "}{selectedDate || "select date"}{chosenSlot ? ` · ${chosenSlot.startTime?.slice(0, 5)}` : ""}
                       </div>
                     </div>
@@ -323,7 +335,7 @@ export default function Booking() {
                     </div>
                     <label className="flex cursor-pointer items-center gap-3">
                       <input type="checkbox" checked={isCompany} onChange={(e) => setIsCompany(e.target.checked)} className="h-4 w-4 rounded accent-brand" />
-                      <span className="text-sm text-brand-light">Booking on behalf of a company</span>
+                      <span className="text-sm text-[#313e4a]/85">Booking on behalf of a company</span>
                     </label>
                     {isCompany && (
                       <>
@@ -331,23 +343,23 @@ export default function Booking() {
                         <div><label className="fm-label">Company address</label><textarea value={companyAddress} onChange={(e) => setCompanyAddress(e.target.value)} rows={2} className="fm-input mt-2 resize-none" /></div>
                       </>
                     )}
-                    <div className="rounded-xl border border-brand-faint bg-brand-surface p-4 text-sm">
-                      <div className="flex justify-between text-brand-muted"><span>Package</span><span className="font-medium text-brand">{chosen?.name}</span></div>
-                      <div className="mt-2 flex justify-between text-brand-muted"><span>When</span><span className="font-medium text-brand">{selectedDate}{chosenSlot ? `, ${chosenSlot.startTime?.slice(0, 5)}` : ""}</span></div>
-                      <div className="mt-2 flex justify-between text-brand-muted"><span>Price</span><span className="font-semibold text-brand">N${formatPrice(chosen?.price)}</span></div>
+                    <div className="rounded-xl border border-[#313e4a]/15 bg-[#f8f9fb] p-4 text-sm">
+                      <div className="flex justify-between text-[#313e4a]/75"><span>Package</span><span className="font-semibold text-[#313e4a]">{chosen?.name}</span></div>
+                      <div className="mt-2 flex justify-between text-[#313e4a]/75"><span>When</span><span className="font-semibold text-[#313e4a]">{selectedDate}{chosenSlot ? `, ${chosenSlot.startTime?.slice(0, 5)}` : ""}</span></div>
+                      <div className="mt-2 flex justify-between text-[#313e4a]/75"><span>Price</span><span className="font-bold text-[#313e4a]">N${formatPrice(chosen?.price)}</span></div>
                     </div>
                   </motion.div>
                 )}
 
                 {step === 3 && (
                   <motion.div key="s3" initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="flex flex-col items-center py-10 text-center">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-brand text-2xl text-white">✓</div>
-                    <h3 className="mt-6 text-2xl font-semibold text-brand">Booking request submitted</h3>
-                    <p className="mt-3 max-w-sm text-sm leading-relaxed text-brand-muted">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#313e4a] text-2xl text-white">✓</div>
+                    <h3 className="mt-6 text-2xl font-semibold text-[#313e4a]">Booking request submitted</h3>
+                    <p className="mt-3 max-w-sm text-sm leading-relaxed text-[#313e4a]/80">
                       Dear {name.split(" ")[0]}, your request for {chosen?.name} on {selectedDate} at {chosenSlot?.startTime?.slice(0, 5)} has been sent. Check {email} for your invoice.
                     </p>
-                    <div className="mt-6 flex items-center gap-2 rounded-full border border-brand-faint bg-brand-surface px-4 py-2 text-xs text-brand-muted">
-                      <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand" /> Confirmation email sent
+                    <div className="mt-6 flex items-center gap-2 rounded-full border border-[#313e4a]/15 bg-[#f8f9fb] px-4 py-2 text-xs font-medium text-[#313e4a]/75">
+                      <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#313e4a]" /> Confirmation email sent
                     </div>
                   </motion.div>
                 )}
@@ -355,8 +367,14 @@ export default function Booking() {
 
               {step < 3 && (
                 <div className="mt-8 flex items-center justify-between">
-                  <button onClick={() => setStep((s) => Math.max(s - 1, 0))} disabled={step === 0}
-                    className="text-sm text-brand-muted transition-colors hover:text-brand disabled:opacity-30">Back</button>
+                  <button
+                    type="button"
+                    onClick={() => setStep((s) => Math.max(s - 1, 0))}
+                    disabled={step === 0}
+                    className="rounded-lg border border-[#313e4a]/25 bg-[#f3f5f7] px-5 py-2.5 text-sm font-semibold text-[#313e4a] transition-colors hover:bg-[#e8ecf0] disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    Back
+                  </button>
                   <button onClick={next} disabled={!canNext || submitting}
                     className={`fm-btn-primary ${!canNext || submitting ? "pointer-events-none opacity-40" : ""}`}>
                     {submitting ? "Submitting…" : step === 2 ? "Confirm booking" : "Continue"}
@@ -365,13 +383,26 @@ export default function Booking() {
               )}
               {step === 3 && (
                 <div className="mt-4 flex justify-center">
-                  <button onClick={reset} className="text-sm text-brand-muted hover:text-brand">Book another</button>
+                  <button type="button" onClick={reset} className="rounded-lg border border-[#313e4a]/25 bg-[#f3f5f7] px-5 py-2.5 text-sm font-semibold text-[#313e4a] hover:bg-[#e8ecf0]">Book another</button>
                 </div>
               )}
             </div>
           </div>
         </Reveal>
       </div>
+
+      <style>{`
+        @keyframes booking-date-pulse {
+          0%, 100% { background-color: #dc2626; box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.45); }
+          50% { background-color: #ef4444; box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.2); }
+        }
+        .booking-date-available {
+          animation: booking-date-pulse 1.8s ease-in-out infinite;
+        }
+        .booking-date-available:hover {
+          background-color: #b91c1c;
+        }
+      `}</style>
     </section>
   );
 }

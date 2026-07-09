@@ -3,9 +3,10 @@ const STORAGE_KEY = "fm_admin_theme";
 export function getAdminTheme() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
-    return saved === "dark" ? "dark" : "light";
+    if (saved === "light") return "light";
+    return "dark";
   } catch {
-    return "light";
+    return "dark";
   }
 }
 

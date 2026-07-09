@@ -67,7 +67,7 @@ export function LoadingSpinner({ label = "Loading…" }) {
 
 export function IconBtn({ title, onClick, children, variant = "ghost", className = "" }) {
   const styles = {
-    ghost: "border-brand-faint bg-white text-brand-muted hover:border-brand/25 hover:bg-brand-surface hover:text-brand",
+    ghost: "admin-icon-btn--ghost border-brand-faint bg-white text-[#313e4a]/70 hover:border-[#313e4a]/25 hover:bg-[#f3f5f7] hover:text-[#313e4a]",
     primary: "border-brand bg-brand text-white hover:bg-brand-dark",
     success: "admin-icon-btn--success",
     danger: "admin-icon-btn--danger",
@@ -75,7 +75,7 @@ export function IconBtn({ title, onClick, children, variant = "ghost", className
   };
   return (
     <button type="button" title={title} onClick={onClick}
-      className={`inline-flex h-8 w-8 items-center justify-center rounded-lg border transition-colors ${styles[variant]} ${className}`}>
+      className={`admin-action-btn inline-flex h-8 w-8 items-center justify-center rounded-lg border transition-colors ${styles[variant]} ${className}`}>
       {children}
     </button>
   );

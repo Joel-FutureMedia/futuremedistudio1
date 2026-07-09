@@ -1,25 +1,6 @@
 import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { CTA } from "./primitives";
-import oneAfrica from "../assets/companylogos/oneafrica.jpg";
-import radiowave from "../assets/companylogos/radiowave.jpg";
-import logo99fm from "../assets/companylogos/Square-Thumbnail-99-1-300x300.jpg";
-import logoFmNews from "../assets/companylogos/Square-Thumbnail-FM-News-300x300.jpg";
-import logoFresh from "../assets/companylogos/Square-Thumbnail-Fresh-1-300x300.jpg";
-import logoLearnOnOne from "../assets/companylogos/Square-Thumbnail-Learn-on-One-300x300.jpg";
-import logoNova from "../assets/companylogos/Square-Thumbnail-Nova-1-300x300.jpg";
-import logoOmulunga from "../assets/companylogos/Square-Thumbnail-Omulunga-1-300x300.jpg";
-
-const PARTNER_LOGOS = [
-  { src: oneAfrica, alt: "One Africa" },
-  { src: radiowave, alt: "Radiowave" },
-  { src: logo99fm, alt: "99FM" },
-  { src: logoFmNews, alt: "FM News" },
-  { src: logoFresh, alt: "Fresh FM" },
-  { src: logoLearnOnOne, alt: "Learn on One" },
-  { src: logoNova, alt: "Nova" },
-  { src: logoOmulunga, alt: "Omulunga" },
-];
 
 export default function Hero() {
   const ref = useRef(null);
@@ -115,24 +96,6 @@ export default function Hero() {
           <CTA href="/#work" className="shadow-card hover:shadow-card-hover">
             See the work
           </CTA>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.05 }}
-          className="mt-8 flex flex-wrap items-center gap-6"
-        >
-          {PARTNER_LOGOS.map((logo) => (
-            <img
-              key={logo.alt}
-              src={logo.src}
-              alt={logo.alt}
-              className="h-16 w-auto object-contain"
-              loading="lazy"
-              decoding="async"
-            />
-          ))}
         </motion.div>
       </motion.div>
     </section>

@@ -34,14 +34,14 @@ function Card({ s }) {
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-brand/40 to-transparent" />
-          <span className="absolute left-5 top-5 rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold tracking-wider text-brand">{s.n}</span>
+          <span className="absolute left-5 top-5 rounded-full bg-white/95 px-3 py-1 text-[11px] font-semibold tracking-wider text-[#313e4a]">{s.n}</span>
         </div>
         <div className="flex flex-1 flex-col p-6">
-          <h3 className="text-xl font-semibold tracking-tight text-brand">{s.title}</h3>
-          <p className="mt-2.5 flex-1 text-sm leading-relaxed text-brand-light">{s.desc}</p>
+          <h3 className="text-xl font-semibold tracking-tight text-[#313e4a]">{s.title}</h3>
+          <p className="mt-2.5 flex-1 text-sm leading-relaxed text-[#313e4a]/85">{s.desc}</p>
           <div className="mt-5 flex flex-wrap gap-2">
             {s.tags.map((t) => (
-              <span key={t} className="rounded-lg border border-brand-faint bg-brand-surface px-3 py-1 text-[11px] font-medium text-brand-muted">{t}</span>
+              <span key={t} className="rounded-lg border border-[#313e4a]/15 bg-[#f3f5f7] px-3 py-1 text-[11px] font-medium text-[#313e4a]/75">{t}</span>
             ))}
           </div>
         </div>

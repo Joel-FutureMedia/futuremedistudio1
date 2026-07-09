@@ -30,8 +30,8 @@ export default function SlotsPanel() {
       {msg && <Alert type="success">{msg}</Alert>}
 
       <form onSubmit={create} className="flex flex-wrap gap-3 rounded-2xl border border-brand-faint bg-white p-6 shadow-card">
-        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required className="fm-input max-w-[200px]" />
-        <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required className="fm-input max-w-[160px]" />
+        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required className="fm-input admin-datetime-input max-w-[200px]" />
+        <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required className="fm-input admin-datetime-input max-w-[160px]" />
         <button type="submit" className="fm-btn-primary">Add slot</button>
       </form>
 

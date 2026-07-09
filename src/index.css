@@ -146,8 +146,8 @@ body {
 .admin-table-wrap {
   overflow: hidden;
   border-radius: 1rem;
-  border: 1px solid var(--brand-faint);
-  background: var(--brand);
+  border: 1px solid rgba(49, 62, 74, 0.14);
+  background: #ffffff;
   box-shadow: var(--shadow-card);
 }
 
@@ -162,24 +162,24 @@ body {
   position: sticky;
   top: 0;
   z-index: 10;
-  background-color: var(--brand-surface);
+  background-color: #f8f9fb;
 }
 
 .admin-table th {
   white-space: nowrap;
-  border-bottom: 1px solid var(--brand-faint);
+  border-bottom: 1px solid rgba(49, 62, 74, 0.12);
   padding: 0.875rem 1rem;
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--brand-muted);
+  color: rgba(49, 62, 74, 0.65);
 }
 
 .admin-table td {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid rgba(49, 62, 74, 0.1);
   padding: 0.875rem 1rem;
-  color: var(--brand);
+  color: #313e4a;
 }
 
 .admin-table tbody tr {
@@ -187,20 +187,61 @@ body {
 }
 
 .admin-table tbody tr:hover {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(49, 62, 74, 0.04);
 }
 
-/* Admin theme shell */
+/* Admin theme shell — light (default) */
 .admin-shell {
-  --admin-bg: var(--brand-surface);
-  --admin-panel: var(--brand);
-  --admin-panel-alt: var(--brand-surface);
-  --admin-border: var(--brand-faint);
-  --admin-text: #ffffff;
-  --admin-text-muted: rgba(255, 255, 255, 0.75);
+  --admin-bg: #f3f5f7;
+  --admin-panel: #ffffff;
+  --admin-panel-alt: #f8f9fb;
+  --admin-border: rgba(49, 62, 74, 0.14);
+  --admin-text: #313e4a;
+  --admin-text-muted: rgba(49, 62, 74, 0.65);
   min-height: 100vh;
   background-color: var(--admin-bg);
   color: var(--admin-text);
+}
+
+.admin-shell:not(.admin-theme-dark) .text-brand {
+  color: var(--admin-text) !important;
+}
+
+.admin-shell:not(.admin-theme-dark) .text-brand-light {
+  color: rgba(49, 62, 74, 0.78) !important;
+}
+
+.admin-shell:not(.admin-theme-dark) .text-brand-muted {
+  color: var(--admin-text-muted) !important;
+}
+
+.admin-shell:not(.admin-theme-dark) .border-brand-faint {
+  border-color: var(--admin-border) !important;
+}
+
+.admin-shell:not(.admin-theme-dark) .bg-brand-surface {
+  background-color: var(--admin-panel-alt) !important;
+}
+
+.admin-shell:not(.admin-theme-dark) .bg-brand\/10 {
+  background-color: rgba(49, 62, 74, 0.08) !important;
+}
+
+.admin-shell:not(.admin-theme-dark) .bg-brand\/5 {
+  background-color: rgba(49, 62, 74, 0.05) !important;
+}
+
+.admin-shell:not(.admin-theme-dark) .fm-card,
+.admin-shell:not(.admin-theme-dark) .admin-table-wrap,
+.admin-shell:not(.admin-theme-dark) .fm-input,
+.admin-shell:not(.admin-theme-dark) .fm-btn-secondary {
+  background-color: var(--admin-panel);
+  border-color: var(--admin-border);
+  color: var(--admin-text);
+}
+
+.admin-shell:not(.admin-theme-dark) .fm-label {
+  color: var(--admin-text-muted);
 }
 
 .admin-shell.admin-theme-dark {
@@ -250,6 +291,54 @@ body {
   color: rgba(154, 163, 173, 0.7);
 }
 
+.admin-shell.admin-theme-dark {
+  color-scheme: dark;
+}
+
+.admin-theme-dark input[type="date"],
+.admin-theme-dark input[type="time"],
+.admin-theme-dark input[type="datetime-local"] {
+  color-scheme: dark;
+}
+
+/* Force white calendar/clock icons in dark admin (works regardless of browser defaults) */
+.admin-theme-dark input[type="date"]::-webkit-calendar-picker-indicator,
+.admin-theme-dark input[type="time"]::-webkit-calendar-picker-indicator,
+.admin-theme-dark input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+.admin-theme-dark .admin-datetime-input::-webkit-calendar-picker-indicator {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+  cursor: pointer;
+}
+
+.admin-theme-dark input[type="date"]::-moz-calendar-picker-indicator,
+.admin-theme-dark input[type="time"]::-moz-calendar-picker-indicator,
+.admin-theme-dark .admin-datetime-input::-moz-calendar-picker-indicator {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+  cursor: pointer;
+}
+
+.admin-theme-dark .admin-datetime-input[type="date"]::-webkit-calendar-picker-indicator {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 18px;
+  height: 18px;
+  filter: none;
+}
+
+.admin-theme-dark .admin-datetime-input[type="time"]::-webkit-calendar-picker-indicator {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E");
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 18px;
+  height: 18px;
+  filter: none;
+}
+
 .admin-theme-dark .admin-table thead {
   background-color: var(--admin-panel-alt);
 }
@@ -284,7 +373,7 @@ body {
   color: var(--admin-text) !important;
 }
 
-/* Sidebar nav — active item must stay readable on white sidebar */
+/* Sidebar nav */
 .admin-nav-link {
   display: flex;
   width: 100%;
@@ -293,19 +382,19 @@ body {
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--brand-light);
+  color: rgba(49, 62, 74, 0.72);
   background-color: transparent;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .admin-nav-link:hover {
-  background-color: var(--brand-surface);
-  color: var(--brand);
+  background-color: #f3f5f7;
+  color: #313e4a;
 }
 
 .admin-nav-link.is-active {
-  background-color: #ffffff !important;
-  color: var(--brand) !important;
+  background-color: #313e4a !important;
+  color: #ffffff !important;
 }
 
 .admin-theme-dark .admin-nav-link {
@@ -319,7 +408,37 @@ body {
 
 .admin-theme-dark .admin-nav-link.is-active {
   background-color: #ffffff !important;
-  color: var(--brand) !important;
+  color: #313e4a !important;
+}
+
+/* Dark theme — white icons on action buttons and controls */
+.admin-theme-dark button svg,
+.admin-theme-dark a svg {
+  color: inherit;
+}
+
+.admin-theme-dark .admin-action-btn.admin-icon-btn--ghost,
+.admin-theme-dark .admin-action-btn:not(.admin-icon-btn--success):not(.admin-icon-btn--danger):not(.admin-icon-btn--warning) {
+  color: #ffffff !important;
+  border-color: var(--admin-border);
+  background-color: var(--admin-panel-alt);
+}
+
+.admin-theme-dark .admin-action-btn.admin-icon-btn--ghost:hover,
+.admin-theme-dark .admin-action-btn:not(.admin-icon-btn--success):not(.admin-icon-btn--danger):not(.admin-icon-btn--warning):hover {
+  color: #ffffff !important;
+  background-color: #243040;
+}
+
+.admin-theme-dark header button.rounded-lg.border {
+  color: #ffffff;
+  border-color: var(--admin-border);
+  background-color: var(--admin-panel-alt);
+}
+
+.admin-theme-dark .rounded-full.bg-brand-surface.text-brand svg,
+.admin-theme-dark .flex.h-12.w-12.items-center.justify-center.rounded-full svg {
+  color: #ffffff;
 }
 
 /* Action icon buttons */
